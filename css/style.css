@@ -1,0 +1,980 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+    color: black;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5em;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+}
+
+/* --------------------------------------------------- Navigation Bar (Universal) */
+
+.navigation-bar {
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    position: fixed;
+    width: 100%;
+    height: 8.4em;
+    top: 0;
+    z-index: 9999;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navigation-logo a img {
+    min-width: 175px;
+    margin-top: 0.5em;
+}
+
+.navigation-link {
+    margin: 2em 0 1em 0;
+}
+
+.icon {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+    padding: 0.2em;
+    margin: 0 0.7em;
+    width: 22px;
+}
+
+.icon:hover {
+    opacity: 1.0;
+}
+
+.main-menu {
+    margin: 0.5em 0 1em 0;
+}
+
+.main-menu ul {
+    display: flex;
+    align-items: flex-start;
+}
+
+.main-menu a {
+    color: #777777;
+    transition: color 0.2s ease;
+    padding: 0.5em 1.2em;
+}
+
+.more {
+    display: flex;
+    border-style: none;
+    background-color: white;
+    color: #777777;
+    transition: color 0.2s ease;
+    cursor: pointer;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    margin-left: 2em;
+    margin-right: 2.4em;
+    padding: 0.15em 0;
+}
+
+.main-menu a[href="about.html"], .main-menu a[href="contact.html"] {
+    padding: 0.3em 1em 0.3em 1em;
+}
+
+.main-menu a:hover, .more:hover {
+    color: black;
+}
+
+.main-menu button.more::after {
+    padding-left: 0.3em;
+    content: "  \25BE";
+}
+
+.current-page {
+    color: black !important;
+}
+
+.more-dropdown {
+    background-color: white;
+    margin: 0.5em 0 0 1.2em;
+    display: none;
+    flex-direction: column;
+    position: relative;
+}
+
+/* --------------------------------------------------- Footer Section (Universal) */
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    background-color: #111111;
+    color: white;
+    padding: 2em 3em;
+}
+
+.footer-logo {
+    width: 2em;
+    margin-right: 0.2em;
+}
+
+.footer-description {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-info p {
+    font-size: 0.7em;
+    margin-left: 0.9em;
+    line-height: 1.4em;
+}
+
+.footer-info p:first-child {
+    margin-top: 0.1em;
+}
+
+.footer-info a {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-link {
+    margin: 0 0 2em 0;
+}
+
+.footer-link a {
+    color: white;
+    margin-right: 1em;
+}
+
+.footer-link ul {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/* --------------------------------------------------- index.html */
+
+/*Earth & Character Image*/
+#introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 7em;
+    color: white;
+    background-color: black;
+    width: 100%;
+    padding-bottom: 5%;
+}
+
+#earth {
+    width: 100%;
+}
+
+#introduction h2 {
+    font-family: 'PT Serif', Helvetica, Arial, sans-serif;
+    margin-top: -10%;
+    z-index: 1;
+}
+
+#introduction a {
+    margin-top: 0.3em;
+    font-size: 0.9em;
+    color: #AAAAAA;
+    transition: color 0.2s ease;
+    z-index: 1;
+}
+
+#introduction a:hover {
+    color: white;
+}
+
+
+/* About Section */
+#about {
+    display: flex;
+    flex-direction: column;
+    margin: 3em 3em;
+}
+
+#about h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.3em;
+}
+
+.about-title {
+    font-size: 1.2em;
+    margin: 1.5em 0 1em 0;
+}
+
+.about-title::before {
+    content: "\276F";
+    margin-right: 0.5em;
+}
+
+#about article p {
+    margin-bottom: 1em;
+}
+
+/* --------------------------------------------------- story.html */
+#story-map img {
+    width: 100%;
+    margin-top: 5.5em;
+}
+
+#destination li {
+    position: absolute;
+}
+
+#destination a {
+    display: block;
+    color: black;
+}
+
+#destination li.stop {
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 100%;
+    z-index: 1;
+
+    animation-name: destination;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#destination li.stop a {
+    color: white;
+    text-shadow: #111111 1px 0 10px;
+    padding-left: 1.2em;
+    margin-top: -0.8em;
+    line-height: 20px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+#destination li.stop:hover a {
+    visibility: visible;
+    opacity: 1;
+}
+
+#destination li.stop-egypt {
+    top: calc(5.3em + 24vw);
+    left: 55%;
+}
+
+#destination li.stop-italy {
+    top: calc(5.3em + 18vw);
+    left: 50%;
+}
+
+#destination li.stop-jordan {
+    top: calc(5.3em + 21vw);
+    left: 57%;
+}
+
+#destination li.stop-india {
+    top: calc(5.3em + 25vw);
+    left: 68%;
+}
+
+#destination li.stop-china {
+    top: calc(5.3em + 21vw);
+    left: 75%;
+}
+
+#destination li.stop-peru {
+    top: calc(5.3em + 33vw);
+    left: 26%;
+}
+
+#destination li.stop-brazil {
+    top: calc(5.3em + 35vw);
+    left: 33%;
+}
+
+#destination li.stop-mexico {
+    top: calc(5.3em + 24vw);
+    left: 18%;
+}
+
+@keyframes destination {
+    0%, 20%, 100% {
+        box-shadow: 0 0 8px 10px rgba(255, 255, 255, 0);
+    }
+    50%, 80% {
+        box-shadow: 0 0 8px 10px rgba(255, 255, 255, 0.7);
+    }
+}
+
+#list-view {
+    display: flex;
+    flex-direction: column;
+    margin: 2em 3em;
+}
+
+#list-view a {
+    color: #777777;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: all 0.2s ease;
+}
+
+#list-view img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+#list-view a:hover {
+    color: black;
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+}
+
+#destination-list {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 1em;
+}
+
+.stop-list {
+    margin: 1em 2em 1em 0;
+}
+
+/* --------------------------------------------------- story-xx.html */
+.story {
+    background-color: black;
+}
+
+.story-img {
+    width: 100%;
+}
+
+.dialog {
+    position: fixed;
+    z-index: 5;
+    width: 70%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1.5em;
+    padding: 2em;
+    top: 8em;
+    left: 3em;
+    display: flex;
+}
+
+.story-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.story-content p {
+    font-size: 15px;
+}
+
+.dialog > img {
+    width: 18%;
+    height: 18%;
+    float: left;
+    margin-right: 1em;
+}
+
+.story-nav {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.story-nav a {
+    color: #CCCCCC;
+    margin-right: 1em;
+}
+
+.story-nav a:hover {
+    color: white;
+}
+
+.dialog-toggle {
+    display: flex;
+}
+
+.story-previous {
+    display: none;
+}
+
+.story-next {
+    display: block;
+}
+
+.page-1 {
+    display: block;
+}
+
+.page-2 {
+    display: none;
+}
+
+.page-3 {
+    display: none;
+}
+
+/* --------------------------------------------------- explore.html */
+#slideshow {
+    top: 150px;
+    z-index: -2;
+    position: fixed;
+}
+
+#slideshow img {
+    width: 100%;
+}
+
+#slideshow-featured {
+    margin-top: 1em;
+    z-index: -2;
+}
+
+#slideshow-featured img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+#slideshow-featured nav {
+    margin-top: 1em;
+    text-align: center;
+}
+
+#slideshow-featured nav span {
+    cursor: pointer;
+    margin: 0 2em;
+    font-weight: bold;
+}
+
+#explore {
+    width: 100%;
+}
+
+#explore h2 {
+    margin-top: 35%;
+    padding: 1em 1em;
+    color: white;
+    text-shadow: #111111 1px 0 10px;
+    font-size: 3em;
+}
+
+#explore-view {
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    padding-bottom: 1.5em;
+}
+
+#explore-content, #featured {
+    margin: 0 3em 0 3em;
+    padding-top: 1em;
+    width: 100%;
+}
+
+#explore-content img {
+    width: 350px;
+    border-radius: 10px;
+}
+
+#explore-content p {
+    color: white;
+    text-shadow: #111111 0 0 10px;
+    margin: -2em 0 0 0;
+    display: block;
+    transition: content 0.5s ease;
+}
+
+#explore-content a p::before {
+    content: "\276F";
+    margin-right: 0.5em;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+#explore-content a:hover p::before {
+    opacity: 100;
+}
+
+#explore-list {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.explore-item {
+    margin: 1em 2em 1em 0;
+}
+
+/* --------------------------------------------------- explore-xx.html */
+
+.explore-header {
+    padding: 170px 3em 0 3em;
+    background-image: url("../images/africa/pyramid-of-giza-2.jpg");
+    background-repeat: no-repeat;
+    background-size: 1500px;
+    background-position: right;
+}
+
+.explore-header a {
+    color: black;
+    font-size: 1.2em;
+    text-shadow: white 2px 0 10px;
+    transition: color 0.3s ease;
+}
+
+.explore-header a:hover {
+    color: #555555;
+}
+
+.explore-header a::before {
+    content: "\276E";
+    margin-right: 0.5em;
+}
+
+.explore-header h2 {
+    color: white;
+    padding: 0.7em 0;
+    text-shadow: black 2px 0 10px;
+    font-size: 3em;
+    line-height: 1.2em;
+}
+
+.explore-content {
+    margin: 2em 3em 2em 3em;
+}
+
+.explore-article {
+    margin-right: 1em;
+}
+
+.explore-article p {
+    margin-bottom: 1.5em;
+}
+
+.explore-article a {
+    color: #777777;
+    transition: color 0.5s ease;
+}
+
+.explore-article a::after {
+    content: "\276F";
+    margin-left: 0.5em;
+}
+
+.explore-article a:hover {
+    color: black;
+}
+
+.explore-info {
+    margin-left: 1em;
+    margin-top: 1.5em;
+}
+
+.explore-info img {
+    width: 402px;
+}
+
+/* --------------------------------------------------- shop.html */
+#shop-header {
+    padding: 170px 3em 0 3em;
+    background-image: url("../images/shops/shop-header.jpeg");
+    background-repeat: no-repeat;
+    background-size: 1500px;
+    background-position: right;
+}
+
+#shop-header h2 {
+    color: black;
+    padding: 0.7em 0;
+    text-shadow: white 2px 0 5px;
+    font-size: 3em;
+}
+
+#shop {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: #EEEEEE;
+}
+
+#item-view, #shopping-cart-view {
+    margin: 0 3em 0 3em;
+    padding-top: 1.5em;
+    padding-bottom: 2em;
+    width: 100%;
+}
+
+#shopping-cart-view p:nth-child(2) {
+    margin-top: 2em;
+}
+
+#shopping-cart-view p:nth-child(3) {
+    margin-top: 1em;
+}
+
+#item-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#item-view h3 {
+    margin-bottom: 1em;
+}
+
+.item {
+    width: 150px;
+    padding: 1em;
+    margin-bottom: 1em;
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.item:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.item img {
+    width: 150px;
+}
+
+.item.image-pop {
+    transform: scale(1);
+}
+
+.add-to-cart, #shop-clear, #shop-checkout {
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: white;
+    padding: 0.6em 2em;
+    margin-top: 0.7em;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    border-radius: 0.5em;
+}
+
+#shop-clear, #shop-checkout {
+    width: 15em;
+}
+
+.add-to-cart {
+    background-color: #2E8C59;
+}
+
+.add-to-cart:hover {
+    background-color: #41B675;
+}
+
+.add-to-cart:active {
+    background-color: #66C992;
+    color: black;
+}
+
+#shop-clear {
+    background-color: white;
+    color: black;
+}
+
+#shop-clear:hover {
+    background-color: #F3F3F3;
+}
+
+#shop-clear:active {
+    background-color: #DDDDDD;
+}
+
+#shop-checkout {
+    background-color: #C9000B;
+}
+
+#shop-checkout:hover {
+    background-color: #E61F20;
+}
+
+#shop-checkout:active {
+    background-color: #F34F4E;
+}
+
+#shop-total {
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 0.5em;
+}
+
+/* --------------------------------------------------- about.html */
+
+#about-header {
+    padding: 8em 3em 0 3em;
+}
+
+#about-header h2 {
+    color: black;
+    text-shadow: white 2px 0 5px;
+    font-size: 3em;
+}
+
+#about-content {
+    padding: 1.5em 3em 1.5em 3em;
+}
+
+#about-content h2 {
+    margin-top: 2em;
+}
+
+#about-content h3 {
+    margin: 1.5em 0 1em 0;
+}
+
+#about-content p {
+    margin: 1em 0;
+}
+
+#about-content p, #about-content strong {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+#about-content a {
+    color: black;
+    text-decoration: underline;
+}
+
+.reference {
+    padding-left: 2em;
+    margin-left: 2em;
+    text-indent: -2em;
+}
+
+/* --------------------------------------------------- contact.html */
+
+#contact-header {
+    padding: 8em 3em 2em 3em;
+    background-image: linear-gradient(to right, #227BB1, #8ED0F2);
+}
+
+#contact-header h2 {
+    color: white;
+    text-shadow: #777777 0 0 5px;
+    font-size: 3em;
+}
+
+#contact-info, #contact-form {
+    padding: 1.5em 3em 1.5em 3em;
+}
+
+#contact-info h3:first-child {
+    margin-bottom: 1em;
+}
+
+#contact-info p:nth-child(5) {
+    margin-top: 1em;
+}
+
+#contact-info a:nth-last-child(1), #contact-info a:nth-last-child(2) {
+    color: #777777;
+    transition: color 0.2s ease;
+    margin-right: 0.5em;
+}
+
+#contact-info a:nth-last-child(1):hover, #contact-info a:nth-last-child(2):hover {
+    color: black;
+}
+
+#avatar {
+    width: 150px;
+    float: left;
+    margin-right: 1.5em;
+}
+
+#contact-form {
+    margin-top: 0.5em;
+}
+
+#contact-form p {
+    margin-bottom: 1.5em;
+}
+
+#contact-form fieldset {
+    background-color: #EEEEEE;
+    border-radius: 3em;
+    border-style: none;
+    padding: 2em;
+    margin: 1.5em -2em 1.5em -2em;
+}
+
+#contact-form .form-item {
+    display: flex;
+    margin-bottom: 1em;
+    align-items: center;
+}
+
+#contact-form .form-item > label {
+    font-weight: bold;
+    width: 150px;
+    padding-right: 2em;
+    text-align: right;
+}
+
+#contact-form .form-item .form-element {
+    width: 60%;
+}
+
+#contact-form input[type=text], #contact-form textarea {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 15px;
+    width: 75%;
+    font-size: 0.9em;
+}
+
+#contact-form textarea {
+    min-height: 100px;
+}
+
+#contact-form input[type=text]:focus {
+    border-color: #2cb5e8;
+}
+
+#contact-form label.error {
+    color: #C9000B;
+}
+
+#contact-form input[type=text].error, #contact-form textarea.error {
+    border-color: #C9000B;
+}
+
+#contact-form button {
+    font-weight: bold;
+    font-size: 0.8em;
+    background: #111111;
+    padding: 0.5em 1em;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    float: left;
+}
+
+#contact-form button[disabled] {
+    background: #ddd;
+    color: #999;
+    cursor: default;
+}
+
+/* --------------------------------------------------- Desktop Override */
+@media only screen and (min-width: 700px) {
+
+    .navigation-bar {
+        height: 5.3em;
+    }
+
+    .navigation-logo a img {
+        margin-left: 2em;
+    }
+
+    /* Put icons to the right. */
+    .navigation-link {
+        order: 2;
+    }
+
+    .main-menu {
+        order: 1;
+        flex-grow: 0.5;
+        margin: 2em 0 1em 0;
+    }
+
+    .main-menu a {
+        padding: 1.2em 1vw 1.2em 3vw;
+    }
+
+    /* index.html */
+    #introduction {
+        margin-top: 1em;
+        padding-bottom: 50px;
+    }
+
+    #earth {
+        width: 1080px;
+    }
+
+    #introduction h2 {
+        margin-top: -4em;
+    }
+
+    /* story.html */
+    #story-map img {
+        margin-top: 90px;
+    }
+
+    /* explore.html */
+    #slideshow {
+        top: 70px;
+    }
+
+    #explore h2 {
+        margin-top: 25%;
+    }
+
+    #explore-view {
+        flex-flow: row nowrap;
+    }
+
+    #explore-content {
+        margin: 0 0.5em 0 3em;
+        width: 70%;
+    }
+
+    #featured {
+        margin: 0 3em 0 0.5em;
+        width: 30%;
+    }
+
+    /* explore-xx.html */
+    .explore-content {
+        display: flex;
+    }
+
+    .explore-header h2 {
+        line-height: 1em;
+    }
+
+    .explore-info {
+        margin-top: 0;
+    }
+
+    /* shop.html */
+    #shop-header {
+        padding-top: 110px;
+    }
+
+    #shop {
+        flex-flow: row nowrap;
+    }
+
+    #item-view {
+        margin: 0 0.5em 0 3em;
+        width: 70%;
+    }
+
+    #shopping-cart-view {
+        margin: 0 3em 0 2em;
+        width: 30%;
+    }
+}
